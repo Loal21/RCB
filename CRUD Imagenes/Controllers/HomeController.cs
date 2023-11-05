@@ -1,9 +1,14 @@
 ﻿using CRUD_Imagenes.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace CRUD_Imagenes.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -14,6 +19,24 @@ namespace CRUD_Imagenes.Controllers
         }
 
         public IActionResult Index()
+        {
+            ClaimsPrincipal claimuser = HttpContext.User;
+            string nombreUsuario = "";
+
+            if (claimuser.Identity.IsAuthenticated)
+            {
+                nombreUsuario = claimuser.Claims.Where(c => c.Type == ClaimTypes.Name)
+                    .Select(c => c.Value).SingleOrDefault();
+            }
+
+            ViewData["nombreUsuario"] = nombreUsuario;
+
+            return View();
+        }
+
+        //Autorizacion
+        [Authorize(Roles = "Usuario")]
+        public IActionResult Ventas()
         {
             return View();
         }
@@ -27,6 +50,13 @@ namespace CRUD_Imagenes.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<IActionResult> CerrarSesion()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction("IniciarSesion", "Inicio");
         }
     }
 }
