@@ -1,10 +1,10 @@
-﻿using CRUD_Imagenes.Data;
-using CRUD_Imagenes.Models;
+﻿using CRUD_Imagenes.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Data;
 using System.Security.Cryptography;
 using Microsoft.Win32;
+using CRUD_Imagenes.Data;
 
 namespace CRUD_Imagenes.Controllers
 {
@@ -146,8 +146,8 @@ namespace CRUD_Imagenes.Controllers
                         cmd.Parameters.Add("@Nombre", SqlDbType.NVarChar).Value = imagen.Nombre;
                         cmd.Parameters.Add("@Apellido", SqlDbType.NVarChar).Value = imagen.Apellido;
                         cmd.Parameters.Add("@Imagen", SqlDbType.NVarChar).Value = i;
-                        cmd.Parameters.Add("@Documento", SqlDbType.Int).Value = imagen.Documento;
-                        cmd.Parameters.Add("@Telefono", SqlDbType.Int).Value = imagen.Telefono;
+                        cmd.Parameters.Add("@Documento", SqlDbType.NVarChar).Value = imagen.Documento;
+                        cmd.Parameters.Add("@Telefono", SqlDbType.NVarChar).Value = imagen.Telefono;
                         con.Open();
                         cmd.ExecuteNonQuery();
                         con.Close();
