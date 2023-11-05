@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using CRUD_Imagenes.Models;
 using CRUD_Imagenes.Servicios.Contrato;
+using CRUD_Imagenes.Data;
 
 namespace CRUD_Imagenes.Servicios.Implementacion
 {

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using CRUD_Imagenes.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CRUD_Imagenes.Models;
+namespace CRUD_Imagenes.Data;
 
 public partial class DbpruebaContext : DbContext
 {
@@ -51,4 +52,7 @@ public partial class DbpruebaContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+
+
 }
