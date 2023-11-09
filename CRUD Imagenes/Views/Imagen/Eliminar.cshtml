@@ -10,30 +10,59 @@
         <div class="row g-0">
             <div class="col md-4">
                 <img src="data:image/jpg; base64, @Model.Image" class="rounded" width="400">
-            </div>
-            <div class="col md-8">
-                <div class="card-body">
-                    <h5 class="card-title"> Registro</h5>
-                    <table class="table">
-                        <input hidden asp-for="Id_Imagen" />
-                        <tr>
-                            <td>
-                                <label class="form-label"> Nombre:</label>
-                            </td>
-                            <td>
-                                <input disabled type="text" class="form-control" asp-for="Nombre" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <button type="submit" class="btn btn-outline-danger"> Eliminar </button>
-                            </td>
-                        </tr>
-                    </table>
+                <div class="col md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"> Registro</h5>
+                        <table class="table">
+                            <input hidden asp-for="Id_Imagen" />
+                            <tr>
+                                <td>
+                                    <label class="form-label"> Nombre:</label>
+                                </td>
+
+                                <td>
+                                    <input required type="text" class="form-control" asp-for="Nombre" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="form-label">Apellido:</label>
+                                </td>
+                                <td>
+                                    <input required type="text" class="form-control" asp-for="Apellido" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="form-label">Documento:</label>
+                                </td>
+                                <td>
+                                    <input required type="text" class="form-control" asp-for="Documento" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="form-label">Telefono:</label>
+                                </td>
+                                <td>
+                                    <input required type="text" class="form-control" asp-for="Telefono" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="file" class="form-control" asp-for="File" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button type="submit" class="btn btn-outline-danger"> Eliminar </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </form>
 
 <label class="alert-danger"> @ViewBag.error </label>
