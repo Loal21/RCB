@@ -11,6 +11,7 @@ namespace CRUD_Imagenes.Models
         public string? Image { get; set; }
         public string? Documento { get; set; }
 
+        public string? ID_UsuarioCreador { get; set; }
 
 
         //propiedad no mapeada para validar si se cargo un archivo
