@@ -1,0 +1,77 @@
+﻿@model IEnumerable<CRUD_Imagenes.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<script src="https://cdn.tailwindcss.com"></script>
+<h1 class="text-4xl font-bold mb-6">Listado Usuarios</h1>
+
+<p class="mb-4">
+    <a href="@Url.Action("Create")" class="bg-blue-500 text-white py-2 px-4 rounded">Crear Usuario</a>
+</p>
+
+<table class="table w-full border-collapse border">
+    <thead>
+        <tr class="bg-gray-200">
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Documento)
+            </th>
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Contraseña)
+            </th>
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Rol)
+            </th>
+            <th class="border p-2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="border">
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Documento)
+                </td>
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Contraseña)
+                </td>
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Rol)
+                </td>
+                <td class="border p-2">
+                    @if (User.IsInRole("Administrador"))
+                    {
+                        <a href="@Url.Action("Edit", new { id = item.IdUsuario })" class="text-blue-500 mr-2">Edit</a>
+                    }
+                    @if (User.IsInRole("Administrador") || User.IsInRole("Supervisor"))
+                    {
+                        <a href="@Url.Action("Details", new { id = item.IdUsuario })" class="text-green-500 mr-2">Details</a>
+                    }
+                    @if (User.IsInRole("Administrador"))
+                        {
+                    <a href="@Url.Action("Delete", new { id = item.IdUsuario })" class="text-red-500">Delete</a>
+                        }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

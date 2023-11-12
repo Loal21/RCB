@@ -36,7 +36,7 @@ namespace CRUD_Imagenes.Controllers
 
         //Autorizacion
         [Authorize(Roles = "Administrador")]
-        public IActionResult Ventas()
+        public IActionResult Consultas()
         {
             return View();
         }
