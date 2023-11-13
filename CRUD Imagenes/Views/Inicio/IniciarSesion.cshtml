@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -27,24 +26,27 @@
             <div class="col-12 col-xl-4 col-md-6">
 
                 <div class="card">
-                   
+
                     <div class="card-header">
                         Iniciar Sesion
                     </div>
-                   
+
                     <div class="card-body">
-                       
+                        @{
+                            var userID = new Usuario();
+
+                        }
 
                         <form asp-controller="Inicio" asp-action="IniciarSesion" method="post">
 
                             <input class="form-control mb-3" type="text" placeholder="Documento" required name="documento" />
                             <input class="form-control mb-3" type="password" placeholder="Contraseña" required name="contraseña" />
                             <div class="d-grid gap-2 mb-3">
-                                <button style="background-color: green; color: white;" class="btn btn-primary" type="submit">Iniciar Sesion</button>
+                                <button style="background-color: green; color: white;" class="btn btn-primary" type="submit" asp-route-id="@userID.Documento">Iniciar Sesion</button>
                             </div>
                             @if (ViewData["Mensaje"] != null)
                             {
-                                
+
                                 <div class="form-group">
                                     <div class="alert alert-danger" role="alert">
                                         @ViewData["Mensaje"]

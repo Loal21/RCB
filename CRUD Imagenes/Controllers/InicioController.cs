@@ -81,7 +81,7 @@ namespace CRUD_Imagenes.Controllers
                 properties
             );
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("index", "Imagen", new { documento = documento });
         }
     }
 }

@@ -1,8 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Listados";
 }
+@{
+    var userID = new Usuario();
 
-<a asp-action="Crear" asp-controller="Imagen" class="btn btn-outline-primary">Crear Registro</a>
+}
+<a asp-action="Crear" asp-controller="Imagen" class="btn btn-outline-primary" asp-route-id="@userID.Documento">Crear Registro</a>
 <br />
 <br />
 <div class="row row-cols-1 row-cols-md-3 g-4">
