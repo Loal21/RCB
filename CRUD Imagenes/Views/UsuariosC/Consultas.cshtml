@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CRUD_Imagenes.Models.Usuario>
+@{
+    ViewData["Title"] = "Consultas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://cdn.tailwindcss.com"></script>
+<h1 class="text-4xl font-bold mb-6">Consulta Usuarios</h1>
+
+<form asp-controller="UsuariosC" asp-action="Consultas" method="get" class="mb-4">
+    <div class="flex items-center">
+        <input type="text" name="buscar" class="form-text border p-2 mr-2" placeholder="Buscar" />
+        <button type="submit" class="bg-green-800 text-white py-2 px-4 rounded">Buscar</button>
+    </div>
+</form>
+
+<table class="table w-full border-collapse border">
+    <thead>
+        <tr class="bg-gray-200">
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Documento)
+            </th>
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Contraseña)
+            </th>
+            <th class="border p-2">
+                @Html.DisplayNameFor(model => model.Rol)
+            </th>
+            <th class="border p-2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="border">
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Documento)
+                </td>
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Contraseña)
+                </td>
+                <td class="border p-2">
+                    @Html.DisplayFor(modelItem => item.Rol)
+                </td>
+                <td class="border p-2">
+                    <a href="@Url.Action("Details", new { id = item.IdUsuario })" class="text-green-500 mr-2">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
